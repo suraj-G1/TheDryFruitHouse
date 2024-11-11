@@ -21,7 +21,7 @@ function App() {
         <Route path='signup' element={<Signup/>}></Route>
         <Route path='/dashboard//my-profile' element={<MyProfile/>}/>
 
-        <Route path="product/:productId" element={<ProductDetails/>} />
+        <Route path="products/:productId" element={<ProductDetails/>} />
 
         <Route path='login' element={
           <OpenRoute>
@@ -32,6 +32,8 @@ function App() {
         <Route path='/dashboard/cart' element={<CartItem/>}>
 
         </Route>
+
+        <Route path='products/productId' element={<ProductDetails/>}/>
 
         <Route
           path="forgot-password"

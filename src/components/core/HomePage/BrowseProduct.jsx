@@ -10,7 +10,7 @@ const BrowseProduct = () => {
         let result=[];
         const getAllProducts = async()=>{
           result = await getAllProduct();
-          console.log("REsults",result);
+          //console.log("REsults",result);
           setProducts(result);
         }
         
@@ -22,7 +22,7 @@ const BrowseProduct = () => {
   return (
 
     
-    <div>
+    <div className='w-full px-6 mx-auto mt-8'>
        {
            !products?
            (
@@ -32,15 +32,13 @@ const BrowseProduct = () => {
             )
             :
             (
-              <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1'>
+              <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-6'>
                 {
-                  products.map((product,index)=>{
-                    return (
-                      <Link key={index}>
-                          <ProductCard product = {product}/>
-                      </Link>
-                  )
-                  })
+                  products.map((product,index)=>(
+            
+                    <ProductCard key={index} product = {product} Height={"h-[200px]"}/>
+                  
+                  ))
                 }
               </div>
             )

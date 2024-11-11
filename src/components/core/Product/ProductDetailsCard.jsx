@@ -5,8 +5,8 @@ import {addToCart} from '../../../slices/cartSlice'
 import {toast} from 'react-hot-toast'
 import { FaShareSquare } from 'react-icons/fa'
 import copy from 'copy-to-clipboard'
-const ProductDetailsCart = (product , setConfirmationModal) => {
-
+const ProductDetailsCart = ({product , setConfirmationModal}) => {
+  console.log("I am here for Product Details");
   const {user} = useSelector((state)=>state.profile);
   const {token} = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
@@ -55,19 +55,12 @@ const ProductDetailsCart = (product , setConfirmationModal) => {
             Rs. {currentPrize}
           </div>
           <div className="flex flex-col gap-4">
-            {/* <button
-              className="yellowButton"
-              onClick={
-                user && c?.studentsEnrolled.includes(user?._id)
-                  ? () => navigate("/dashboard/enrolled-courses")
-                  : handleBuyCourse
-              }
+            <button
+              className="yellowButton"  
             >
-              {user && course?.studentsEnrolled.includes(user?._id)
-                ? "Go To Course"
-                : "Buy Now"}
-            </button> */}
-            {(!user || !product?.customerPurchased.includes(user?._id)) && (
+                Buy Now
+            </button> 
+             {(!user || !product?.customerPurchased.includes(user?._id)) && (
               <button onClick={handleAddToCart} className="blackButton">
                 Add to Cart
               </button>
@@ -90,6 +83,7 @@ const ProductDetailsCart = (product , setConfirmationModal) => {
         </div>
       </div>
     </div>
+    // <div> I am here in Product Card</div>
   )
 }
 

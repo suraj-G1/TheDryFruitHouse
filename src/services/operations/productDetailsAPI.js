@@ -71,19 +71,20 @@ export const deleteProduct = async(data,token)=>{
     toast.dismiss(toastId)
 }
 
-export const getProductDetails = async(productId,token)=>{
+export const getProductDetails = async(productId)=>{
     const toastId = toast.loading("Loading");
-    let result =null;
+    //console.log("Product Id in services",productId);
+    let result = null;
     try{
-        const response = apiConnector("GET",PRODUCT_DETAILS_API,{productId},{Authorization:`Bearer ${token}`})
-        console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response)
-
+        const response =await apiConnector("POST",PRODUCT_DETAILS_API,{productId})
+        console.log("PRODUCT_FULL_DETAILS_API API RESPONSE............", response)
+        
         if (!response.data.success) {
             throw new Error(response.data.message)
         }
-        result = response?.data?.data
+        result = response?.data?.productDetails;
     }catch(error){
-        console.log("COURSE_FULL_DETAILS_API API ERROR............", error)
+        console.log("PRODUCT_FULL_DETAILS_API API ERROR............", error)
         result = error.response.data
     }
     toast.dismiss(toastId);

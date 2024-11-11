@@ -1,51 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart, incrementQuantity,decrementQuantity} from '../../../slices/cartSlice';
-
-const ProductCard = ({product}) => {
+import { Link } from 'react-router-dom';
+import RatingStars from '../../common/RatingStars'
+import GetAvgRating from '../../../utils/avgRating';
+const ProductCard = ({product,Height}) => {
     const {cart} = useSelector((state)=>state.cart);
     //const cartItem = cart.find((p)=>p.id === product._id);
 
-    const[quantity,setQuantity] = useState(1);
-    console.log("Quantity",quantity);
+    //const[quantity,setQuantity] = useState(1);
+    //console.log("Quantity",quantity);
     const dispatch = useDispatch();
+
+    const [avgReviewCount,setAvgReviewCount] = useState(0);
+
+    useEffect(()=>{
+      const count = GetAvgRating(product.ratingAndReview);
+      setAvgReviewCount(count)
+    },[product]);
   return (
-    <div
-      className="flex flex-col justify-between items-center hover:scale-105 transition duration-300 
-    ease-in shadow-2xl gap-3 py-4 px-1 mt-10 ml-5 rounded-xl bg-pink-5 "
-    >
-      <div className="h-[150px] w-[78%]">
-        <img src={product.image} className="h-full w-full rounded-lg" />
-      </div>
-      <div>
-        <p className="text-gray-700 font-semibold text-lg text-left truncate w-40 mt-1 ">
-          {product.productName}
-        </p>
-      </div>
-
-      <div>
-        <p className="w-40 text-gray-400 text-[11px] font-normal text-left">
-          {product.description.split(" ").slice(0, 3).join(" ") + "..."}
-        </p>
-      </div>
-      <div className="flex justify-between  gap-[25px] items-center w-full mt-2">
-        <div>
-          <p className="text-green-600 text-sm font-semibold">${product.prize}</p>
+    
+    <div>
+      <Link to={`/products/${product._id}`}>
+        <div className='flex flex-col bg-pink-25 py-3 px-4 rounded-md'>
+          <div className="rounded-lg mx-auto">
+            <img
+              src={product?.image}
+              alt="course thumnail"
+              className={`${Height} w-full rounded-xl object-cover `}
+            />
+          </div>
+          <div className="flex flex-col gap-2 px-1 py-3">
+            <p className="text-xl text-richblack-5">{product?.productName}</p>
+            <div className="flex items-center gap-2">
+              <span className="text-yellow-5">{avgReviewCount || 0}</span>
+              <RatingStars Review_Count={avgReviewCount} />
+              <span className="text-richblack-400">
+                {product?.ratingAndReview?.length} Ratings
+              </span> 
+            </div>
+            <p className="text-xl text-richblack-5">Rs. {product?.prize}</p>
+          </div>
         </div>
-         {cart.some((p) => p._id === product._id) ? (
-          <button   className="text-gray-700 border-2 uppercase border-gray-700 p-1 px-3 
-           text-[12px] rounded-full font-semibold
-           hover:text-white hover:bg-gray-700 transition duration-300 ease-in">Remove Item</button>
-        ) : (
-          <button  className="text-gray-700 border-2 uppercase border-gray-700 p-1 px-3
-            text-[12px] rounded-full font-semibold
-            hover:text-white hover:bg-gray-700 transition duration-300 ease-in">Add to Cart</button>
-        )}
-      </div>
-
-      
-
+      </Link>
     </div>
+
   )
 }
 
