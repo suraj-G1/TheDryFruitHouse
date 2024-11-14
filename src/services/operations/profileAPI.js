@@ -1,7 +1,8 @@
-import { setLoading } from "../../slices/authSlice";
+import { setLoading,setUser } from "../../slices/profileSlice";
 import { profileEndpoints } from "../api";
 import {toast} from 'react-hot-toast';
 import { apiConnector } from "../apiConnector";
+import {logout} from './authAPI'
 const {
     GET_SELLER_DATA_API,
     GET_USER_BOUGHT_PRODUCT_API,

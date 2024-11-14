@@ -25,19 +25,19 @@ const Navbar = () => {
                     NavbarLinks.map((link,index)=>(
                         link.title !== 'Category'?
                         (
-                            <div>
+                    
                                 <Link to={link.link} key={index}>
                                     {link.title}
                                 </Link>
-                            </div>
+                    
                         )
                         :
                         (
-                            <div>
+                        
                                 <Link to={link.link} key={index}>
                                     {link.title}
                                 </Link>
-                            </div>
+                    
                         )
                     ))
                 }

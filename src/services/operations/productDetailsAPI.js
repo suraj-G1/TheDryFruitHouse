@@ -25,7 +25,7 @@ export const getAllProduct = async()=>{
         toast.error(error.message)
     }
     toast.dismiss(toastId);
-    console.log(result);
+    //console.log(result);
     return result;
 }
 

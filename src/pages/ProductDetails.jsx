@@ -7,11 +7,13 @@ import ProductDetailsCart from '../components/core/Product/ProductDetailsCard';
 import RatingStars from '../components/common/RatingStars';
 import Footer from '../components/common/Footer';
 import ConfirmationModal from '../components/common/ConfirmationModal';
+import { BuyProduct } from '../services/operations/customerPaymentAPI';
+import { addToCart } from '../slices/cartSlice';
 const ProductDetails = () => {
   const { user } = useSelector((state) => state.profile)
   const { token } = useSelector((state) => state.auth)
-  //const { loading } = useSelector((state) => state.profile)
-  //const { paymentLoading } = useSelector((state) => state.course)
+  const { paymentLoading } = useSelector((state) => state.product)
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { productId } = useParams()
@@ -64,32 +66,36 @@ const ProductDetails = () => {
     customerPurchased,
   } = response;
 
-  // const handleBuyCourse = () => {
-  //   console.log("Buying the Course");
-  //   if (token) {
-  //     BuyCourse(token, [courseId], user, navigate, dispatch)
-  //     console.log("Bought the Course");
-  //     return
-  //   }
-    
-  //   setConfirmationModal({
-  //     text1: "You are not logged in!",
-  //     text2: "Please login to Purchase Course.",
-  //     btn1Text: "Login",
-  //     btn2Text: "Cancel",
-  //     btn1Handler: () => navigate("/login"),
-  //     btn2Handler: () => setConfirmationModal(null),
-  //   })
-  // }
+  const handleAddToCart=()=>{
+    dispatch(addToCart(response))
+  }
 
-  // if (paymentLoading) {
-  //   // console.log("payment loading")
-  //   return (
-  //     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-  //       <div className="spinner"></div>
-  //     </div>
-  //   )
-  // }
+  const handleBuyProduct = () => {
+    console.log("Buying the Course");
+    if (token) {
+      BuyProduct(token, [productId], user, navigate, dispatch)
+      console.log("Bought the Course");
+      return
+    }
+    
+    setConfirmationModal({
+      text1: "You are not logged in!",
+      text2: "Please login to Purchase Course.",
+      btn1Text: "Login",
+      btn2Text: "Cancel",
+      btn1Handler: () => navigate("/login"),
+      btn2Handler: () => setConfirmationModal(null),
+    })
+  }
+
+  if (paymentLoading) {
+    // console.log("payment loading")
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -102,7 +108,7 @@ const ProductDetails = () => {
               <div className="absolute bottom-0 left-0 h-full w-full shadow-[#161D29_0px_-64px_36px_-28px_inset]"></div>
               <img
                 src={image}
-                alt="course thumbnail"
+                alt="Product Image"
                 className="aspect-auto w-full"
               />
             </div>
@@ -118,8 +124,8 @@ const ProductDetails = () => {
               <div className="text-md flex flex-wrap items-center gap-2">
                 <span className="text-yellow-25">{avgReviewCount}</span>
                 <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
-                <span>{`(${ratingAndReview.length} reviews)`}</span>
-                <span>{`${customerPurchased.length} students enrolled`}</span>
+                <span>{`${ratingAndReview.length} Reviews`}</span>
+                <span>{`${customerPurchased.length} Customers Purchased`}</span>
               </div>
               
              
@@ -129,11 +135,11 @@ const ProductDetails = () => {
                 Rs. {prize}
               </p>
               <button className="yellowButton"
-              //  onClick={handleBuyCourse}
+                onClick={handleBuyProduct}
                >
                 Buy Now
               </button>
-              <button className="blackButton">Add to Cart</button>
+              <button onClick={handleAddToCart} className="blackButton">Add to Cart</button>
             </div>
           </div>
           {/* Courses Card */}
@@ -141,7 +147,7 @@ const ProductDetails = () => {
             <ProductDetailsCart
               product={response}
               setConfirmationModal={setConfirmationModal}
-              //handleBuyCourse={handleBuyCourse}
+              handleBuyProduct={handleBuyProduct}
             />
           </div>
         </div>

@@ -37,5 +37,12 @@ export const settingsEndpoints = {
     UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
     CHANGE_PASSWORD_API: BASE_URL + "/auth/changePassword",
     DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
+}
+
+// Customer ENDPOINTS
+export const CustomerEndpoints = {
+    COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+    COURSE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
+    SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
   }
   

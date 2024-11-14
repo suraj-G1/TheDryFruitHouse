@@ -6,7 +6,7 @@ import {toast} from 'react-hot-toast'
 import { FaShareSquare } from 'react-icons/fa'
 import copy from 'copy-to-clipboard'
 const ProductDetailsCart = ({product , setConfirmationModal}) => {
-  console.log("I am here for Product Details");
+  //console.log("I am here for Product Details");
   const {user} = useSelector((state)=>state.profile);
   const {token} = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
