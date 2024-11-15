@@ -1,4 +1,2 @@
-export const ACCOUNT_TYPE = {
-    CUSTOMER: "Customer",
-    ADMIN: "Admin",
-  }
+export const ADMIN_EMAIL = 'surajgund46@gmail.com'
+  

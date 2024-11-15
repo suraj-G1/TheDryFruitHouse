@@ -34,19 +34,21 @@ export default function Admin() {
             result = await getAllProduct();
             setProduct(result);
         };
-        getAllProduct();
+        getAllProducts();
 
       },[])
 
-  const totalAmount = adminData?.reduce(
-    (acc, curr) => acc + curr.totalAmountGenerated,
-    0
-  )
+   const totalAmount = 0
+//adminData?.reduce(
+//     (acc, curr) => acc + curr.totalAmountGenerated,
+//     0
+//   ) || 0
 
-  const totalCustomer = adminData?.reduce(
-    (acc, curr) => acc + curr.totalCustomerPurchased,
-    0
-  )
+  const totalCustomer = 0
+//   adminData?.reduce(
+//     (acc, curr) => acc + curr.totalCustomerPurchased,
+//     0
+//   ) || 0
 
   return (
     
@@ -104,7 +106,7 @@ export default function Admin() {
             
             <div className="flex items-center justify-between">
               <p className="text-lg font-bold text-richblack-5">Your Product</p>
-              <Link to="dashboard/my-products">
+              <Link to="/dashboard/my-products">
                 <p className="text-xs font-semibold text-yellow-50">View All</p>
               </Link>
             </div>

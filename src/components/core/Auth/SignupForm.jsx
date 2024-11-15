@@ -19,7 +19,7 @@ const SignupForm = () => {
   const handleOnSubmit = (e)=>{}
   return (
     <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
-      <div className="flex gap-x-4">
+      <div className="flex gap-x-4 justify-between">
         <label>
           <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">First Name</p>
 
@@ -55,7 +55,7 @@ const SignupForm = () => {
         </label>
       </div>
 
-      <div className="max-w-[92%]">
+      <div>
       <label >
         <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Email Address<sup className="text-pink-200">*</sup></p>
         <input
@@ -72,7 +72,7 @@ const SignupForm = () => {
       </label>
       </div>
 
-      <div className="flex gap-x-4">
+      <div className="flex gap-x-4 justify-between">
         <label className="relative">
           <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
             Create Password

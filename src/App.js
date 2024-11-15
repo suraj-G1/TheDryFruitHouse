@@ -18,6 +18,10 @@ import Settings from './components/core/Dashboard/Settings';
 import { useSelector } from 'react-redux';
 import Admin from './components/core/Dashboard/Admin';
 import PurchasedProduct from './components/core/Dashboard/PurchasedProduct';
+import { ADMIN_EMAIL } from './utils/constants';
+import MyProduct from './components/core/Dashboard/MyProduct';
+import AddProduct from './components/core/Dashboard/AddProduct';
+import ProductReviewModal from './pages/ProductReviewModal';
 function App() {
   const{user} = useSelector((state)=>state.profile);
   return (
@@ -84,7 +88,7 @@ function App() {
             </OpenRoute>
           }
         />
-        <Route 
+        {/* <Route 
           path='/dashboard'
           element={
             <PrivateRoute>
@@ -92,7 +96,6 @@ function App() {
             </PrivateRoute>
           }
         />
-          {/* Route for all users */}
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/settings" element={<Settings />} />
 
@@ -108,7 +111,38 @@ function App() {
               element={<PurchasedProduct/>}
           />
             )
-          }
+          } */}
+
+
+<Route 
+    path='/dashboard' 
+    element={
+      <PrivateRoute>
+        <Dashboard /> {/* This component contains Sidebar and Outlet */}
+      </PrivateRoute>
+    }
+  >
+    {/* Nested routes under /dashboard */}
+    <Route path="my-profile" element={<MyProfile />} />
+    <Route path="settings" element={<Settings />} />
+
+    {/* Conditionally render admin or user-specific routes */}
+    {user && user.email === ADMIN_EMAIL &&
+      <Route path="admin" element={<Admin />} />
+    }
+    
+    {user && user.email === ADMIN_EMAIL && 
+       <Route path='add-product' element={<AddProduct/>}/>
+    }
+    {
+      user && user.email === ADMIN_EMAIL && 
+      <Route path='my-products' element = {<MyProduct/>}/>
+    }
+      <Route path="purchased-products" element={<PurchasedProduct />} />
+
+      {/* <Route path='/add-review' element={<ProductReviewModal/>}/> */}
+    
+  </Route>
       </Routes>
     </div>
   );

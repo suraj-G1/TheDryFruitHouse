@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 //import ProgressBar from "@ramonak/react-progress-bar"
 import { BiDotsVerticalRounded } from "react-icons/bi"
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom"
+import ProductReviewModal from "../../../pages/ProductReviewModal"
 //import { getUserEnrolledCourses } from "../../../services/operations/profileAPI"
 import { getUserPurchasedProduct } from "../../../services/operations/profileAPI"
 import { setPaymentLoading } from "../../../slices/productSlice"
@@ -11,35 +11,30 @@ export default function PurchasedProduct() {
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
-  const [PurchasedProduct, setPurchasedProduct] = useState(null)
-
+  const [purchasedProduct, setPurchasedProduct] = useState(null)
+  const [reviewModal,setReviewModal] = useState(false);
   useEffect(() => {
     ;(async () => {
       try {
         const res = await getUserPurchasedProduct(token); // Getting all the published and the drafted courses
 
-        // Filtering the published course out
-        //const filterPublishCourse = res.filter((ele) => ele.status !== "Draft")
-        // console.log(
-        //   "Viewing all the couse that is Published",
-        //   filterPublishCourse
-        // )
+        
+        console.log("Purchased Product by User",res);
         setPurchasedProduct(res)
       } catch (error) {
         console.log("Could not fetch enrolled courses.")
       }
     })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
       <div className="text-3xl text-richblack-50">Purchased Products</div>
-      {!PurchasedProduct ? (
+      {!purchasedProduct ? (
         <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
           <div className="spinner"></div>
         </div>
-      ) : !PurchasedProduct.length ? (
+      ) : !purchasedProduct.length ? (
         <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
           You have not Purchased any Product yet.
           {/* TODO: Modify this Empty State */}
@@ -52,14 +47,14 @@ export default function PurchasedProduct() {
             
           </div>
           {/* Product Names */}
-          {PurchasedProduct.map((product, i, arr) => (
+          {purchasedProduct.map((product, i, arr) => (
             <div
               className={`flex items-center border border-richblack-700 ${
                 i === arr.length - 1 ? "rounded-b-lg" : "rounded-none"
               }`}
               key={i}
             >
-              <div
+            <div
                 className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3"
               >
                 <img
@@ -75,12 +70,21 @@ export default function PurchasedProduct() {
                       : product.description}
                   </p>
                 </div>
-              </div>
+
+                
+                </div>
+            <div>
+                <Link to={'/dashboard/purchased-products/add-review'}>
+                     <button>Add Review</button>
+                </Link>
+                {reviewModal && <ProductReviewModal setReviewModal = {setReviewModal} product = {product}/>}
+            </div>
               
             </div>
           ))}
         </div>
       )}
+
     </>
   )
 }

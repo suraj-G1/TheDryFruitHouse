@@ -6,16 +6,18 @@ import { useNavigate } from "react-router-dom"
 //import { fetchInstructorCourses } from "../../../services/operations/courseDetailsAPI"
 import { getAllProduct } from "../../../services/operations/productDetailsAPI"
 import IconBtn from "../../common/IconBtn"
+import ProductTable from "./AdminProduct/ProductTable"
 //import CoursesTable from "./InstructorCourses/CourseTable"
 
 export default function MyProduct() {
   const {token} = useSelector((state) => state.auth)
   const navigate = useNavigate()
-  const [product,setProduct] = useState([])
+  const [product,setProduct] = useState(null)
 
   useEffect(() => {
     const fetchProduct = async () => {
       const result = await getAllProduct(token)
+      console.log("Admin Product",result);
       if (result) {
         setProduct(result)
       }
@@ -26,16 +28,16 @@ export default function MyProduct() {
 
   return (
     <div>
-      <div className="mb-14 flex items-center justify-between">
+      <div className="mb-14 flex items-center justify-between bg-richblack-700">
         <h1 className="text-3xl font-medium text-richblack-5">My Products</h1>
         <IconBtn
-          text="Add Course"
+          text="Add Product"
           onclick={() => navigate("/dashboard/add-product")}
         >
           <VscAdd />
         </IconBtn>
       </div>
-      {/* {product && <CoursesTable product={product} setProduct={setProduct} />} */}
+      {product && <ProductTable product={product} setProduct={setProduct} />} 
     </div>
   )
 }

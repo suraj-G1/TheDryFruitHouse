@@ -3,6 +3,7 @@ import { profileEndpoints } from "../api";
 import {toast} from 'react-hot-toast';
 import { apiConnector } from "../apiConnector";
 import {logout} from './authAPI'
+
 const {
     GET_SELLER_DATA_API,
     GET_USER_BOUGHT_PRODUCT_API,
@@ -10,7 +11,7 @@ const {
     
 } = profileEndpoints;
 
-export async function getUserDetails(token,navigate){
+export  function getUserDetails(token,navigate){
     return async(dispatch)=>{
         const toastId = toast.loading("Loading");
         dispatch(setLoading(true));
@@ -35,12 +36,10 @@ export async function getUserDetails(token,navigate){
         }
         toast.dismiss(toastId)
         dispatch(setLoading(false))
-        
-
     }
 }
 
-export async function getUserPurchasedProduct(token,navigate){
+export async  function getUserPurchasedProduct(token,navigate){
     const toastId = toast.loading("Loading...")
   let result = []
   try {

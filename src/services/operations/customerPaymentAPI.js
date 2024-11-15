@@ -41,7 +41,7 @@ export async function BuyProduct(
   const toastId = toast.loading("Loading...")
   try {
     // Loading the script of Razorpay SDK
-    //console.log("Loading Payment Script");
+    console.log("Loading Payment Script");
     const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
     //console.log("Loaded the script");
     if (!res) {
@@ -119,6 +119,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
     }
 
     toast.success("Payment Successful")
+    console.log('Payment Successful');
     navigate("/dashboard/purchased-products")
     dispatch(resetCart())
   } catch (error) {
