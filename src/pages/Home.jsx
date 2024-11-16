@@ -6,15 +6,13 @@ import BrowseProduct from '../components/core/HomePage/BrowseProduct'
 import Footer from "../components/common/Footer";
 const Home = () => {
   return (
-    <div className="bg-richblack-300 flex flex-col gap-4">
+    <div className=" flex flex-col gap-4">
 
-        <div className="w-10/12 mx-auto mt-8">
+        <div className="w-11/12 mx-auto mt-8">
             <h1 className="text-center text-4xl uppercase text-richblack-25 font-bold">Our Range of Dry Fruits!</h1>
             <BrowseProduct/>
         </div>
-
         <Footer/>
-
     </div>
   );
 };

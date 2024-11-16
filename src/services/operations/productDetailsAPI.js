@@ -16,12 +16,12 @@ export const getAllProduct = async()=>{
         const response = await apiConnector("GET",GET_ALL_PRODUCT_API);
         //console.log("respnse",response?.data?.data);
         if(!response?.data?.success){
-            throw new Error("Could Not Fetch Course Categories")
+            throw new Error("Could Not Fetch Product")
         }
         //console.log("Get All Product",response?.data?.data?.data);
         result = response?.data?.data;
     }catch(error){
-        console.log("GET_ALL_COURSE_API API ERROR............", error)
+        console.log("GET_ALL_PRODUCT_API API ERROR............", error)
         toast.error(error.message)
     }
     toast.dismiss(toastId);

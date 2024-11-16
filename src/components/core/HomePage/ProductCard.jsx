@@ -22,24 +22,28 @@ const ProductCard = ({product,Height}) => {
     
     <div>
       <Link to={`/products/${product._id}`}>
-        <div className='flex flex-col bg-pink-25 py-3 px-4 rounded-md'>
+        <div className='flex flex-col border border-black text-center'>
           <div className="rounded-lg mx-auto">
             <img
               src={product?.image}
-              alt="course thumnail"
-              className={`${Height} w-full rounded-xl object-cover `}
+              alt="product thumnail"
+              className={`${Height} w-full object-cover h-fit `}
             />
           </div>
           <div className="flex flex-col gap-2 px-1 py-3">
-            <p className="text-xl text-richblack-5">{product?.productName}</p>
-            <div className="flex items-center gap-2">
-              <span className="text-yellow-5">{avgReviewCount || 0}</span>
+            <p className="text-xl font-semibold">{product?.productName}</p>
+            <div className="flex items-center gap-2 justify-center">
+              <span className="text-black">{avgReviewCount || 0}</span>
               <RatingStars Review_Count={avgReviewCount} />
-              <span className="text-richblack-400">
+              <span className="text-black">
                 {product?.ratingAndReview?.length} Ratings
               </span> 
             </div>
-            <p className="text-xl text-richblack-5">Rs. {product?.prize}</p>
+            <p className="text-[#520608] text-xl font-bold">Rs. {product?.prize}</p>
+
+            <div>
+              <button>View Details</button>
+            </div>
           </div>
         </div>
       </Link>

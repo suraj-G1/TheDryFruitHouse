@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../assets/Logo/logo.jpg'
+import Logo from '../../assets/Logo/logo.png'
 import { Link } from 'react-router-dom'
 import { NavbarLinks } from '../../data/Navbar-links'
 import { useSelector } from 'react-redux'
@@ -15,7 +15,7 @@ const Navbar = () => {
     //console.log('User',user);
   return (
     <div className='bg-richblack-5'>
-        <div className='w-10/12 mx-auto flex justify-between items-center'>
+        <div className='w-11/12 mx-auto flex justify-between items-center'>
             <Link to={'/'}>
                 <img src={Logo} width={250} height={250} loading='lazy'/>
             </Link>

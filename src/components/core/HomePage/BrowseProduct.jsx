@@ -10,7 +10,7 @@ const BrowseProduct = () => {
         let result=[];
         const getAllProducts = async()=>{
           result = await getAllProduct();
-          //console.log("REsults",result);
+          console.log("REsults",result);
           setProducts(result);
         }
         
