@@ -4,6 +4,8 @@ import { addToCart, removeFromCart, incrementQuantity,decrementQuantity} from '.
 import { Link } from 'react-router-dom';
 import RatingStars from '../../common/RatingStars'
 import GetAvgRating from '../../../utils/avgRating';
+import { MdOutlineShoppingBag } from "react-icons/md";
+
 const ProductCard = ({product,Height}) => {
     const {cart} = useSelector((state)=>state.cart);
     //const cartItem = cart.find((p)=>p.id === product._id);
@@ -22,7 +24,7 @@ const ProductCard = ({product,Height}) => {
     
     <div>
       <Link to={`/products/${product._id}`}>
-        <div className='flex flex-col border border-black text-center'>
+        <div className='flex flex-col border border-black text-center mb-4'>
           <div className="rounded-lg mx-auto">
             <img
               src={product?.image}
@@ -41,10 +43,15 @@ const ProductCard = ({product,Height}) => {
             </div>
             <p className="text-[#520608] text-xl font-bold">Rs. {product?.prize}</p>
 
-            <div>
-              <button>View Details</button>
+            <div className='flex justify-center items-center w-full'>
+            <div className='flex justify-center items-center bg-[#520608] p-1 text-white'>
+              <MdOutlineShoppingBag/>
+              <button className='font-semibold text-[16px]'>View Details</button>
+              
             </div>
           </div>
+          </div>
+          
         </div>
       </Link>
     </div>

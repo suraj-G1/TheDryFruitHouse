@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {sentOtp} from "../../../services/operations/authAPI";
 const SignupForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -9,14 +11,25 @@ const SignupForm = () => {
     password: "",
     confirmPassword: "",
   });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { firstName, lastName, email, password, confirmPassword } = formData;
 
-  const handleOnChange = (e) => {};
-  const handleOnSubmit = (e)=>{}
+  const handleOnChange = (e) => {
+    setFormData((prevData)=>({
+        ...prevData,
+        [e.target.name] : e.target.value
+    }))
+  };
+  const handleOnSubmit=(e)=>{
+    e.preventDefault();
+    //dispatch(login(email,password,navigate))
+    dispatch(sentOtp(email,navigate));
+  };
   return (
     <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
       <div className="flex gap-x-4 justify-between">
@@ -84,6 +97,7 @@ const SignupForm = () => {
               value={password}
               name="password"
               type={showPassword?"text":"password"}
+              onChange={handleOnChange}
               className="form-style w-full p-2 bg-gray-800 text-white placeholder-gray-400 border
            border-gray-600 rounded-lg shadow-sm transition duration-200
            focus:border-pink-500 focus:ring-2 focus:ring-richblack-700 focus:outline-none hover:bg-gray-700"
@@ -108,6 +122,7 @@ const SignupForm = () => {
               value={confirmPassword}
               name="confirmPassword"
               type={showConfirmPassword?"text":"password"}
+              onChange={handleOnChange}
               className="form-style w-full p-2 bg-gray-800 text-white placeholder-gray-400 border
            border-gray-600 rounded-lg shadow-sm transition duration-200
            focus:border-pink-500 focus:ring-2 focus:ring-richblack-700 focus:outline-none hover:bg-gray-700"

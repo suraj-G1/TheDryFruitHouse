@@ -5,13 +5,31 @@ import {addToCart} from '../../../slices/cartSlice'
 import {toast} from 'react-hot-toast'
 import { FaShareSquare } from 'react-icons/fa'
 import copy from 'copy-to-clipboard'
-const ProductDetailsCart = ({product , setConfirmationModal}) => {
+import { BuyProduct } from '../../../services/operations/customerPaymentAPI'
+const ProductDetailsCart = ({weight,product , setConfirmationModal}) => {
   //console.log("I am here for Product Details");
   const {user} = useSelector((state)=>state.profile);
   const {token} = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleBuyProduct = () => {
+    console.log("Buying the Product");
+    if (token) {
+      BuyProduct(token, [productId], user, navigate, dispatch);
+      console.log("Bought the Product");
+      return;
+    }
+
+    setConfirmationModal({
+      text1: "You are not logged in!",
+      text2: "Please login to Purchase Product.",
+      btn1Text: "Login",
+      btn2Text: "Cancel",
+      btn1Handler: () => navigate("/login"),
+      btn2Handler: () => setConfirmationModal(null),
+    });
+  };
   const {
     image:image,
     prize:currentPrize,
@@ -41,22 +59,23 @@ const ProductDetailsCart = ({product , setConfirmationModal}) => {
   return (
     <div>
       <div
-        className={`flex flex-col gap-4 rounded-md bg-richblack-700 p-4 text-richblack-5 mx-auto w-9/12`}
+        className={`flex flex-col gap-4  bg-richblack-700  text-richblack-5 mx-auto w-11/12`}
       >
         {/* Course Image */}
         <img
           src={image}
           alt={product?.productName}
-          className="max-h-[300px] min-h-[180px] w-[400px] overflow-hidden rounded-2xl object-cover md:max-w-full"
+          className="max-h-[300px] min-h-[200px] overflow-hidden object-cover max-w-full"
         />
 
         <div className="px-4">
           <div className="space-x-3 pb-4 text-3xl font-semibold">
-            Rs. {currentPrize}
+            Rs. {weight*currentPrize}
           </div>
           <div className="flex flex-col gap-4">
             <button
               className="yellowButton"  
+              onClick={handleBuyProduct}
             >
                 Buy Now
             </button> 
@@ -66,11 +85,11 @@ const ProductDetailsCart = ({product , setConfirmationModal}) => {
               </button>
             )}
           </div>
-          <div>
+          {/* <div>
             <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
               30-Day Money-Back Guarantee
             </p>
-          </div>
+          </div> */}
 
           <div className="text-center">
             <button

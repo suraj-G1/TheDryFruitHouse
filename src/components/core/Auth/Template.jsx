@@ -6,7 +6,7 @@ import frameImg from "../../../assets/Images/frame.png";
 const Template = ({ header, subHeader, description, image, formType }) => {
   const { loading } = useSelector((state) => state.auth);
   return (
-    <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center bg-richblack-25 px-4">
+    <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center bg-white px-4">
       {loading ? (
         <div className="spinner"></div>
       ) : (

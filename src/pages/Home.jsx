@@ -9,7 +9,7 @@ const Home = () => {
     <div className=" flex flex-col gap-4">
 
         <div className="w-11/12 mx-auto mt-8">
-            <h1 className="text-center text-4xl uppercase text-richblack-25 font-bold">Our Range of Dry Fruits!</h1>
+            <h1 className="text-center text-4xl uppercase text-richblack-900 font-bold">Our Range of Dry Fruits!</h1>
             <BrowseProduct/>
         </div>
         <Footer/>
