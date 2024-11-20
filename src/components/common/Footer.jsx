@@ -24,10 +24,10 @@ const Footer = () => {
                 </p>
 
                 <div className='flex gap-4 w-[90%]'>
-                    <FaFacebook className='h-[40px] w-full'/>
-                    <FaSquareInstagram className='h-[40px] w-full'/>
-                    <FaSquareXTwitter className='h-[40px] w-full'/>
-                    <FaLinkedin className='h-[40px] w-full'/>
+                    <FaFacebook className='h-[36px] w-full'/>
+                    <FaSquareInstagram className='h-[36px] w-full'/>
+                    <FaSquareXTwitter className='h-[36px] w-full'/>
+                    <FaLinkedin className='h-[36px] w-full'/>
                 </div>
             </div>
 

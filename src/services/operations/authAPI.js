@@ -29,7 +29,6 @@ export function sentOtp(email, navigate) {
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
-
       toast.success("OTP Sent Successfully");
       navigate("/verify-email");
     } catch (error) {
