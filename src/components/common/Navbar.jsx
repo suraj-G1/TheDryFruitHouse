@@ -1,26 +1,31 @@
 import React from 'react'
 import Logo from '../../assets/Logo/logo.png'
-import { Link } from 'react-router-dom'
+import { Link ,useLocation} from 'react-router-dom'
 import { NavbarLinks } from '../../data/Navbar-links'
 import { useSelector } from 'react-redux'
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import ProfileDropDown from '../core/Auth/ProfileDropDown'
 import { AiOutlineMenu } from 'react-icons/ai'
 const Navbar = () => {
-
     const {token} = useSelector((state)=>state.auth);
     const {user} = useSelector((state)=>state.profile);
     const {totalItems} = useSelector((state)=>state.cart);
     //console.log("token",token);
     //console.log('User',user);
+    const location = useLocation();
+    const handleLogoClick=()=>{
+        if(location.pathname === '/'){
+            window.scrollTo({top:0, behavior:'smooth'})
+        }
+    }
   return (
-    <div className='bg-richblack-5'>
-        <div className='w-11/12 mx-auto flex justify-between items-center'>
-            <Link to={'/'}>
+    <div className='bg-richblack-5 fixed top-0 left-0 right-0 z-50'>
+        <div className='w-11/12 mx-auto flex justify-between items-center pb-2 pt-2'>
+            <Link to={'/'} onClick={handleLogoClick}>
                 <img src={Logo} width={250} height={250} loading='lazy'/>
             </Link>
 
-            <div className='flex gap-4 justify-between items-center fond-semibold text-lg'>
+            <div className='md:flex gap-8 justify-between items-center fond-bold text-xl hidden'>
                 {
                     NavbarLinks.map((link,index)=>(
                         link.title !== 'Category'?

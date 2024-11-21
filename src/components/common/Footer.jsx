@@ -16,13 +16,11 @@ const Footer = () => {
   return (
     <div className='bg-pure-greys-100 pt-10 p-6 w-full mx-auto flex flex-col gap-6 text-black'>
         <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mx-auto  pt-6 px-6 pb-6 gap-6'>
-             
             <div className='flex flex-col gap-4 max-w-[90%]'>
                 <img src={Logo} height={250} width={250}/>
-                <p className=' font-medium'>
+                <p className='font-medium'>
                 Dry Fruit House brings you a collection of carefully selected foods from India and across the world.
                 </p>
-
                 <div className='flex gap-4 w-[90%]'>
                     <FaFacebook className='h-[36px] w-full'/>
                     <FaSquareInstagram className='h-[36px] w-full'/>

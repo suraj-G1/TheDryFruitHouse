@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
 import { getAllProduct } from "../../../services/operations/productDetailsAPI"
 //import { fetchInstructorCourses } from "../../../services/operations/courseDetailsAPI"
 //import { getInstructorData } from "../../../services/operations/profileAPI"
@@ -13,14 +13,16 @@ export default function Admin() {
   const [loading, setLoading] = useState(false)
   const [adminData, setAdminData] = useState(null)
   const [products, setProduct] = useState([])
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     ;(async () => {
       setLoading(true)
-      const adminApiData = await getUserDetails(token)
+      //const adminApiData = await getUserDetails(token,navigate,dispatch);
       const result = await getAllProduct(token)
-      console.log(adminApiData)
-      if (adminApiData.length) setAdminData(adminApiData)
+      //console.log(adminApiData)
+      //if (adminApiData?.length) setAdminData(adminApiData)
       if (result) {
         setProduct(result)
       }
@@ -38,13 +40,23 @@ export default function Admin() {
 
       },[])
 
-   const totalAmount = 0
+      console.log("All Product",products);
+   let totalAmount = 0
+   let totalCustomer = 0;
 //adminData?.reduce(
 //     (acc, curr) => acc + curr.totalAmountGenerated,
 //     0
 //   ) || 0
+     products.map((p)=>{
+      if(p?.customerPurchased?.length>0){
+        totalAmount+= p.prize;
+        totalCustomer += p?.customerPurchased?.length;
+      }
+     })
 
-  const totalCustomer = 0
+  
+
+  //const totalCustomer = 0
 //   adminData?.reduce(
 //     (acc, curr) => acc + curr.totalCustomerPurchased,
 //     0
@@ -54,7 +66,7 @@ export default function Admin() {
     
     <div>
       <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-richblack-5">
+        <h1 className="text-2xl font-bold text-richblack-5 capitalize">
           Hi {user?.firstName} 👋
         </h1>
         <p className="font-medium text-richblack-200">
@@ -65,10 +77,10 @@ export default function Admin() {
         <div className="spinner"></div>
       ) : products.length > 0 ? (
         <div>
-          <div className="my-4 flex h-[450px] space-x-4">
+          <div className="my-4 flex h-[500px] space-x-4">
             {/* Render chart / graph */}
             {totalAmount > 0 || totalCustomer > 0 ? (
-              <AdminChart products={adminData} />
+              <AdminChart products={products} />
             ) : (
               <div className="flex-1 rounded-md bg-richblack-800 p-6">
                 <p className="text-lg font-bold text-richblack-5">Visualize</p>

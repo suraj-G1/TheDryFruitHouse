@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAllProduct } from '../../../services/operations/productDetailsAPI';
-import { Link ,matchPath,useLocation} from 'react-router-dom';
+import { matchPath,useLocation} from 'react-router-dom';
 import ProductCard from './ProductCard';
 const BrowseProduct = () => {
   const[products,setProducts] = useState([]);
@@ -32,7 +32,7 @@ const BrowseProduct = () => {
             )
             :
             (
-              <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-6'>
+              <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6'>
                 {
                   products.map((product,index)=>(
             

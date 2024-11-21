@@ -11,8 +11,7 @@ const {
     
 } = profileEndpoints;
 
-export  function getUserDetails(token,navigate){
-    return async(dispatch)=>{
+export async  function getUserDetails(token,navigate,dispatch){
         const toastId = toast.loading("Loading");
         dispatch(setLoading(true));
         try{
@@ -37,7 +36,7 @@ export  function getUserDetails(token,navigate){
         toast.dismiss(toastId)
         dispatch(setLoading(false))
     }
-}
+
 
 export async  function getUserPurchasedProduct(token,navigate){
     const toastId = toast.loading("Loading...")

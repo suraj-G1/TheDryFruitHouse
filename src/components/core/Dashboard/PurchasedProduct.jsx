@@ -64,7 +64,7 @@ export default function PurchasedProduct() {
                 />
                 <div className="flex max-w-xs flex-col gap-2">
                   <p className="font-semibold">{product.productName}</p>
-                  <p className="text-xs text-richblack-300">
+                  <p className="text-xs text-richblack-900">
                     {product.description.length > 50
                       ? `${product.description.slice(0, 50)}...`
                       : product.description}
@@ -79,7 +79,7 @@ export default function PurchasedProduct() {
                 </Link>
                 {reviewModal && <ProductReviewModal setReviewModal = {setReviewModal} product = {product}/>}
             </div>
-              
+
             </div>
           ))}
         </div>

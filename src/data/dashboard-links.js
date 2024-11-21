@@ -30,7 +30,7 @@ export const sidebarLinks = [
   },
   {
     id: 5,
-    name: "Purchased Product",
+    name: "Your Order",
     path: "/dashboard/purchased-products",
     icon: "VscMortarBoard",
     type:'customer'

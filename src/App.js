@@ -24,14 +24,14 @@ import AddProduct from "./components/core/Dashboard/AddProduct";
 import ProductReviewModal from "./pages/ProductReviewModal";
 import { RiContactsBook2Fill } from "react-icons/ri";
 import ContactUs from "./pages/ContactUs";
+import About from "./pages/About";
 function App() {
   const { user } = useSelector((state) => state.profile);
   return (
-    <div>
+    <div className="relative">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-
         <Route path="signup" element={<Signup />}></Route>
 
         <Route path="products/:productId" element={<ProductDetails />} />
@@ -90,30 +90,7 @@ function App() {
             </OpenRoute>
           }
         />
-        {/* <Route 
-          path='/dashboard'
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-          <Route path="dashboard/my-profile" element={<MyProfile />} />
-          <Route path="dashboard/settings" element={<Settings />} />
-
-          {
-             user && user.email === process.env.ADMIN_EMAIL && (
-              <Route path='dashboard/admin' element={<Admin/>}/>
-             )
-          }
-          {
-            user && user.email !== process.env.ADMIN_EMAIL && (
-              <Route
-              path='dashboard/purchased-products'
-              element={<PurchasedProduct/>}
-          />
-            )
-          } */}
+        
 
         <Route
           path="/dashboard"
@@ -144,6 +121,8 @@ function App() {
         </Route>
 
         <Route path="contact" element={<ContactUs/>}/>
+
+        <Route path="about" element={<About/>}/>
       </Routes>
     </div>
   );

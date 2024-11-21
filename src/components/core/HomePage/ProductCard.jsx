@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart, incrementQuantity,decrementQuantity} from '../../../slices/cartSlice';
+// import { addToCart, removeFromCart, incrementQuantity,decrementQuantity} from '../../../slices/cartSlice';
 import { Link } from 'react-router-dom';
 import RatingStars from '../../common/RatingStars'
 import GetAvgRating from '../../../utils/avgRating';
@@ -24,12 +24,12 @@ const ProductCard = ({product,Height}) => {
     
     <div>
       <Link to={`/products/${product._id}`}>
-        <div className='flex flex-col border border-black text-center mb-4'>
-          <div className="rounded-lg mx-auto">
+        <div className='flex flex-col border border-richblack-25 text-center mb-4 rounded-md shadow-xl'>
+          <div className="rounded-md mx-auto">
             <img
               src={product?.image}
               alt="product thumnail"
-              className={`${Height} w-full object-cover h-fit `}
+              className={`${Height} w-full object-cover h-fit rounded-md `}
             />
           </div>
           <div className="flex flex-col gap-2 px-1 py-3">
@@ -51,7 +51,6 @@ const ProductCard = ({product,Height}) => {
             </div>
           </div>
           </div>
-          
         </div>
       </Link>
     </div>
