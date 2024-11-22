@@ -3,9 +3,6 @@ import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { setStep } from "../../../../../slices/productSlice"
-//import { editCourseDetails } from "../../../../../services/operations/courseDetailsAPI"
-//import { resetCourseState, setStep } from "../../../../../slices/courseSlice"
-//import { COURSE_STATUS } from "../../../../../utils/constants"
 import IconBtn from "../../../../common/IconBtn"
 import { resetProductState } from "../../../../../slices/productSlice"
 
@@ -18,11 +15,7 @@ export default function AddToCatalog() {
   const { product } = useSelector((state) => state.product)
   const [loading, setLoading] = useState(false)
 
-//   useEffect(() => {
-//     if (course?.status === COURSE_STATUS.PUBLISHED) {
-//       setValue("public", true)
-//     }
-//   }, [])
+
 
   const goBack = () => {
     dispatch(setStep(2))
@@ -34,33 +27,21 @@ export default function AddToCatalog() {
   }
 
   const handleProductPublish = async () => {
-    // check if form has been updated or not
-    // if (
-    //   (course?.status === COURSE_STATUS.PUBLISHED &&
-    //     getValues("public") === true) ||
-    //   (course?.status === COURSE_STATUS.DRAFT && getValues("public") === false)
-    // ) {
-    //   // form has not been updated
-    //   // no need to make api call
-    //   goToCourses()
-    //   return
-    // }
+  
     const formData = new FormData()
     formData.append("productId", product._id)
-    // const courseStatus = getValues("public")
-    //   ? COURSE_STATUS.PUBLISHED
-    //   : COURSE_STATUS.DRAFT
-    //formData.append("status", courseStatus)
+    
     setLoading(true)
-    // const result = await ed(formData, token)
-      goToProduct()
-    // }
+    goToProduct()
     setLoading(false)
   }
 
   const onSubmit = (data) => {
-    // console.log(data)
     handleProductPublish()
+  }
+
+  if(loading){
+    return <div className="spinner"></div>
   }
 
   return (

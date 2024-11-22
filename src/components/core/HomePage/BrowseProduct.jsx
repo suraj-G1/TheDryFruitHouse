@@ -22,7 +22,7 @@ const BrowseProduct = () => {
   return (
 
     
-    <div className='w-full px-6 mx-auto mt-8'>
+    <div className='w-full mx-auto mt-8'>
        {
            !products?
            (

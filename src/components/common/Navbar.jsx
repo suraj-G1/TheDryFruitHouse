@@ -10,14 +10,15 @@ const Navbar = () => {
     const {token} = useSelector((state)=>state.auth);
     const {user} = useSelector((state)=>state.profile);
     const {totalItems} = useSelector((state)=>state.cart);
-    //console.log("token",token);
-    //console.log('User',user);
+   
     const location = useLocation();
     const handleLogoClick=()=>{
         if(location.pathname === '/'){
             window.scrollTo({top:0, behavior:'smooth'})
         }
     }
+
+    
   return (
     <div className='bg-richblack-5 fixed top-0 left-0 right-0 z-50'>
         <div className='w-11/12 mx-auto flex justify-between items-center pb-2 pt-2'>

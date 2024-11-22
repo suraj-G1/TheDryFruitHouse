@@ -25,6 +25,7 @@ import ProductReviewModal from "./pages/ProductReviewModal";
 import { RiContactsBook2Fill } from "react-icons/ri";
 import ContactUs from "./pages/ContactUs";
 import About from "./pages/About";
+import PurchaseHistory from "./components/core/Dashboard/PurchaseHistory";
 function App() {
   const { user } = useSelector((state) => state.profile);
   return (
@@ -116,11 +117,14 @@ function App() {
             <Route path="my-products" element={<MyProduct />} />
           )}
           <Route path="purchased-products" element={<PurchasedProduct />} />
+          <Route path="purchase-history" element={<PurchaseHistory/>}/>
 
           {/* <Route path='/add-review' element={<ProductReviewModal/>}/> */}
         </Route>
 
         <Route path="contact" element={<ContactUs/>}/>
+
+        
 
         <Route path="about" element={<About/>}/>
       </Routes>

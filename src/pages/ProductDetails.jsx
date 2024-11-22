@@ -104,7 +104,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div className={`relative w-full `}>
+      <div className={`relative w-full  mt-[50px]`}>
         {/* Hero Section */}
         <div className="w-10/12 mx-auto">
           <div className="mx-auto box-content 2xl:relative  p-2">
@@ -125,8 +125,10 @@ const ProductDetails = () => {
                     {productName}
                   </p>
                 </div>
-                <p className="text-richblack-900 font-semibold">Description</p>
-                <p className={`text-black text-[16px] italic`}>{description}</p>
+                <div className="flex flex-col gap-1">
+                  <p className="text-richblack-900 font-bold text-xl">Description</p>
+                  <p className={`text-black text-[16px] italic`}>{description}</p>
+                </div>
                 <div className="text-md flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <span className="text-yellow-25">
@@ -146,8 +148,8 @@ const ProductDetails = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4 items-start">
-                <h2 className="text-lg font-semibold">Select Weight</h2>
-                <div className="grid grid-cols-5 gap-4">
+                <h2 className="text-lg font-semibold">Select Quantity</h2>
+                <div className="flex gap-3">
                   {weights.map((weight) => (
                     <div
                       key={weight}
@@ -187,7 +189,7 @@ const ProductDetails = () => {
               </div>
             </div>
             {/* Courses Card */}
-            <div className="right-[2rem] top-[50px] mx-auto hidden min-h-[600px] w-1/3 max-w-[500px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
+            <div className="right-[6rem] top-[50px] mx-auto hidden min-h-[600px] w-1/3 max-w-[500px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
               <ProductDetailsCart
                 weight={selectedWeight}
                 product={response}

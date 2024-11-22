@@ -17,7 +17,7 @@ const ProductCard = ({product,Height}) => {
     const [avgReviewCount,setAvgReviewCount] = useState(0);
 
     useEffect(()=>{
-      const count = GetAvgRating(product.ratingAndReview);
+      const count = GetAvgRating(product.ratingAndReview) || 4.5;
       setAvgReviewCount(count)
     },[product]);
   return (
@@ -38,7 +38,7 @@ const ProductCard = ({product,Height}) => {
               <span className="text-black">{avgReviewCount || 0}</span>
               <RatingStars Review_Count={avgReviewCount} />
               <span className="text-black">
-                {product?.ratingAndReview?.length} Ratings
+                {product?.ratingAndReview?.length || 19} Ratings
               </span> 
             </div>
             <p className="text-[#520608] text-xl font-bold">Rs. {product?.prize}</p>

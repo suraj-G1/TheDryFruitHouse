@@ -28,7 +28,7 @@ export default function MyProduct() {
 
   return (
     <div>
-      <div className="mb-14 flex items-center justify-between bg-richblack-700">
+      <div className="mb-14 flex items-center p-4 justify-between bg-richblack-700 pt-4 pb-4 rounded-lg">
         <h1 className="text-3xl font-medium text-richblack-5">My Products</h1>
         <IconBtn
           text="Add Product"

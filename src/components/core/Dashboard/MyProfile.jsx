@@ -6,7 +6,6 @@ import {RiEditBoxLine} from 'react-icons/ri'
 const MyProfile = () => {
   const{user} = useSelector((state)=>state.profile);
   const navigate = useNavigate();
-  console.log("My profile");
   return (
     <>
         <h1 className="mb-14 text-3xl font-medium text-richblack-5">

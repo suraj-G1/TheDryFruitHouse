@@ -28,7 +28,7 @@ const About = () => {
 
         </div>
 
-        <div className='flex flex-col w-11/12 mx-auto mt-4'>
+        <div className='flex flex-col w-11/12 mx-auto mt-4 gap-2'>
             <p>We started our first outlet at Pandharpur Maharashtra in 2016 and now we have 5+ outlets
                  across Maharashtra. We focus on stringent quality control and prompt service in order to ensure
                   market standards. Our focus on quality is evident in our product range. We do not
@@ -44,14 +44,14 @@ const About = () => {
              dryfruits packs, fancy dry fruit baskets and plenty of other varieties.
             </p>
             <div className='flex flex-col gap-1'>
-                <h2 className='text-xl text-[#520806] font-semibold'>Vision</h2>
+                <h2 className='text-xl text-[#520806] font-bold'>Vision</h2>
                 <p>To be India's most customer centric company, where customers can buy high quality dry 
                     fruits at their convenience and enjoy a balanced, healthful diet.
                 </p>
             </div>
 
             <div className='flex flex-col gap-1'>
-                <h2 className='text-xl text-[#520806] font-semibold'>Mission</h2>
+                <h2 className='text-xl text-[#520806] font-bold'>Mission</h2>
                 <p>
                     We strive to offer our customers the top quality dry fruits at reasonable rates 
                     and at the utmost convenience.

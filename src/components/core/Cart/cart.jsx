@@ -15,7 +15,7 @@ const CartItem = ({item , itemIndex}) => {
         {totalItems} Products in Cart
       </p>
       {totalItems > 0 ? (
-        <div className="mt-8 flex flex-col-reverse items-start gap-x-8 gap-y-4 lg:flex-row px-4">
+        <div className="mt-8 flex flex-col-reverse items-start gap-x-8 gap-y-4 lg:flex-row ">
           <RenderCartProducts/>
           <RenderTotalAmount />
         </div>

@@ -7,17 +7,14 @@ import { FaShareSquare } from 'react-icons/fa'
 import copy from 'copy-to-clipboard'
 import { BuyProduct } from '../../../services/operations/customerPaymentAPI'
 const ProductDetailsCart = ({weight,product , setConfirmationModal}) => {
-  //console.log("I am here for Product Details");
   const {user} = useSelector((state)=>state.profile);
   const {token} = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleBuyProduct = () => {
-    console.log("Buying the Product");
     if (token) {
       BuyProduct(token, [productId], user, navigate, dispatch);
-      console.log("Bought the Product");
       return;
     }
 
@@ -57,9 +54,9 @@ const ProductDetailsCart = ({weight,product , setConfirmationModal}) => {
     })
   }
   return (
-    <div>
+    <div className='rounded-lg'>
       <div
-        className={`flex flex-col gap-4  bg-richblack-700  text-richblack-5 mx-auto w-11/12`}
+        className={`flex flex-col gap-4  bg-richblack-700  text-richblack-5 mx-auto w-11/12 rounded-lg`}
       >
         {/* Course Image */}
         <img
@@ -85,11 +82,6 @@ const ProductDetailsCart = ({weight,product , setConfirmationModal}) => {
               </button>
             )}
           </div>
-          {/* <div>
-            <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
-              30-Day Money-Back Guarantee
-            </p>
-          </div> */}
 
           <div className="text-center">
             <button
@@ -102,7 +94,6 @@ const ProductDetailsCart = ({weight,product , setConfirmationModal}) => {
         </div>
       </div>
     </div>
-    // <div> I am here in Product Card</div>
   )
 }
 
