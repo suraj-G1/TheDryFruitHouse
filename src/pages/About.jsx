@@ -7,11 +7,11 @@ const About = () => {
   return (
     <div className='flex flex-col gap-4'>
         <div>
-            <img src={about}/>
+            <img src={about} alt='About Us'/>
         </div>
         <div className='w-11/12 mx-auto flex gap-6 mt-8'>
             <div className='w-[40%]'>
-                <img src={Store}/>
+                <img src={Store} alt='Our Store'/>
             </div>
             <div className='w-[60%] flex flex-col justify-center gap-6'>
                 <h2 className='text-3xl font-bold'>About Us</h2>
