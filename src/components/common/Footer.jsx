@@ -11,7 +11,7 @@ const Footer = () => {
     const[email,setEmail] = useState("");
     const handleOnChange=(e)=>{
         e.preventDefault();
-        setEmail(e.target.value);
+        setEmail(e.target.value); 
     }
   return (
     <div className='bg-pure-greys-100 pt-10 p-6 w-full mx-auto flex flex-col gap-6 text-black'>

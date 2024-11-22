@@ -31,7 +31,7 @@ const LoginForm = () => {
     <form onSubmit={handleOnSubmit} 
     className="mt-6 flex w-full flex-col gap-y-4">
       <label className="w-full">
-        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-500">
             Email Address 
             <sup className="text-pink-200">*</sup>
         </p>
@@ -47,7 +47,7 @@ const LoginForm = () => {
       </label>
 
       <label className="relative">
-        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">Password <sup className="text-pink-200">*</sup></p>
+        <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-500">Password <sup className="text-pink-200">*</sup></p>
         <input
           required
           value={password}
