@@ -11,6 +11,8 @@ export default function ProductReviewModal({ setReviewModal,product }) {
   const { token } = useSelector((state) => state.auth)
   //const { courseEntireData } = useSelector((state) => state.viewCourse)
 
+  console.log("I am here in Review modal");
+
   const {
     register,
     handleSubmit,
@@ -33,7 +35,7 @@ export default function ProductReviewModal({ setReviewModal,product }) {
       {
         productId: product._id,
         rating: data.productRating,
-        review: data.productReview,
+        review: data.productExperience,
       },
       token
     )
@@ -78,17 +80,17 @@ export default function ProductReviewModal({ setReviewModal,product }) {
             <div className="flex w-11/12 flex-col space-y-2">
               <label
                 className="text-sm text-richblack-5"
-                htmlFor="courseExperience"
+                htmlFor="productExperience"
               >
                 Review the Product <sup className="text-pink-200">*</sup>
               </label>
               <textarea
-                id="courseExperience"
+                id="productExperience"
                 placeholder="Add Your Experience"
-                {...register("courseExperience", { required: true })}
+                {...register("productExperience", { required: true })}
                 className="form-style resize-x-none min-h-[130px] w-full"
               />
-              {errors.courseExperience && (
+              {errors.productExperience && (
                 <span className="ml-2 text-xs tracking-wide text-pink-200">
                   Please Review the product
                 </span>

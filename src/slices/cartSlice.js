@@ -18,16 +18,13 @@ const cartSlice = createSlice({
            const product = action.payload
            const index = state.cart.findIndex((item)=>item._id === product._id) 
            if(index >=0){
-            //console.log("Product is already in Cart")
             toast.error("Product Is already in Cart");
             return;
-            
            }
            console.log("Products",product);
            state.cart.push(product);
            state.totalItems++;
            state.total += product.prize;
-
            localStorage.setItem('cart',JSON.stringify(state.cart));
            localStorage.setItem('total',JSON.stringify(state.total));
            localStorage.setItem('totalItems',JSON.stringify(state.totalItems));

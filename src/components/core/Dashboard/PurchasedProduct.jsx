@@ -67,21 +67,21 @@ export default function PurchasedProduct() {
                 </div>
               </div>
               <div className="pr-4">
-                <Link to={"/dashboard/purchased-products/add-review"}>
-                  <button
-                    className="yellowButton"
-                    onClick={() => setReviewModal((prev) => prev !== prev)}
-                  >
-                    Add Review
-                  </button>
-                </Link>
-                {reviewModal && (
-                  <ProductReviewModal
-                    setReviewModal={setReviewModal}
-                    product={product}
-                  />
-                )}
+                {/* <Link to={"/dashboard/purchased-products/add-review"}> */}
+                <button
+                  className="yellowButton"
+                  onClick={() => setReviewModal((prev) => !prev)}
+                >
+                  Add Review
+                </button>
+                {/* </Link> */}
               </div>
+              {reviewModal && (
+                <ProductReviewModal
+                  setReviewModal={setReviewModal}
+                  product={product}
+                />
+              )}
             </div>
           ))}
         </div>

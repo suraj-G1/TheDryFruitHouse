@@ -17,6 +17,7 @@ const ProductCard = ({product,Height}) => {
     const [avgReviewCount,setAvgReviewCount] = useState(0);
 
     useEffect(()=>{
+      console.log("Review",product.ratingAndReview);
       const count = GetAvgRating(product.ratingAndReview) || 4.5;
       setAvgReviewCount(count)
     },[product]);

@@ -14,7 +14,7 @@ export const getAllProduct = async()=>{
     let result = [];
     try{
         const response = await apiConnector("GET",GET_ALL_PRODUCT_API);
-        //console.log("respnse",response?.data?.data);
+        console.log("respnse",response?.data?.data);
         if(!response?.data?.success){
             throw new Error("Could Not Fetch Product")
         }
